@@ -14,16 +14,15 @@ function computeRMSE()
 # map the data to features. For convenience we only use 7 original attributes and encode them as features in a trivial way 
 python mapfeat.py
 # split train and validation
-python mknfold.py car.txt 1 5
+python mknfold.py car.txt 1 10
 # training and output the models
-python runxgb.py
-#${xgboost} car.conf
+${xgboost} car.conf
 # output predictions of test data
 #${xgboost} car.conf task=pred model_in=0100.model
-#${xgboost} car.conf task=pred model_in=0021.model
+${xgboost} car.conf task=pred model_in=0021.model
 #${xgboost} car.conf task=pred model_in=0040.model
 #to compute rmse
-#computeRMSE
+computeRMSE
 
 # print the boosters of 0002.model in dump.raw.txt
 #xgboost car.conf task=dump model_in=0020.model name_dump=dump.raw.txt
