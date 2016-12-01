@@ -1,15 +1,22 @@
 # CarRisk
 predict the risk of a car applying for inssurance
 
-分别在train和valid上作预测，统计各自的准确率
-还可以考虑交叉验证
-TODO:all codes in python and called in shell
-to compute rmse in the python code
-linear / logistic / bossion
-the validation k can be adjusted
-tree booster better than linear booster
 统计数据信息：是否有明显的倾斜现象，即有些风险指数对应特别多？
 各个属性和风险指数的相关关系，是否有些属性可以放弃不选，因为它们无用且可能产生干扰？
+数据倾斜现象严重，风险指数为1的记录个数占了主要，而对于该风险，哟徐诶属性可能根本不具有区分度，比如最后一个特征。
+应该如何处理这种情况？避免数据倾斜？移除无用属性？
+---
+还可以考虑交叉验证
+regression: linear / logistic(须先把目标值预处理为0-1之间) / bossion
+多种损失函数的度量：rmse，或者log？。。。
+数据划分时，分为5份取一份做验证，或者分为10份？
+(tree booster better than linear booster)
+---
+1、仅仅靠参数的调整和模型的小幅优化，想要让模型的表现有个大幅度提升是不可能的。GBM的最高得分是0.8487，XGBoost的最高得分是0.8494。确实是有一定的提升，但是没有达到质的飞跃。 
+2、要想让模型的表现有一个质的飞跃，需要依靠其他的手段，诸如，特征工程(feature egineering) ，模型组合(ensemble of model),以及堆叠(stacking)等。
+
+
+
 
 汽车投保风险指数预测
 
